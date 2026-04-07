@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>diy图案</title>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	</head>
+	<body>
+		<div class="top">
+			<ul class="loginbar clearboth container">
+				<li><a href="./index.html"><span>潮绣</span></a></li>
+				<li>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="./rigister.html">注册</a></li>
+				<li><a href="./login.html">登录</a></li>
+			</ul>
+		</div>
+		<div id="header">
+			<ul class="nav clearboth container">
+				<li><a href="./index.html">潮绣</a></li>
+				<li><a href="./atlas.html">diy图案</a></li>
+				<li><a href="./classicline.html">商品展示</a></li>
+				<li><a href="./awards.html">用户反馈</a></li>
+			</ul>
+		</div>
+		<div class="banner-wrapper clear"></div>
+		<div class="container atlas-wrapper">
+			<div class="column-title">
+				<h1>潮绣diy手工区！</h1>
+				<h2>画出或描述出你想要的图案</h2>
+			</div>
+			
+			<div class="banner-wrapper clear"></div>
+			<div class="container atlas-wrapper">
+				<div class="column-title">
+					<h1>选择要制作的款式</h1>
+				<div class="bnt-list">
+					<h2><button id="gun">旗袍图案</button>
+					<button id="gun">香囊</button>
+					<button id="gun">手帕</button>
+					<button id="gun">冰箱贴</button>
+					<button id="gun">其他</button><h2>
+				</div>
+			</div>
+			
+			<div class="canvas-wrap">
+				<canvas id="drawcan" width="860" height="500"></canvas>
+			</div>
+			<div class="tool-bar">
+			<label>颜色:</label>
+			<input type="color" id="colorp" value="#000000">
+			<label>粗细：</label>
+			<input type="range" id="lineWidth" min="1" max="30" value="3">
+			<label>文字：</label>
+			<input type="text" id="textInput" placeholder="输入要写的字">
+			<button id="clearBtn">清空画板</button>
+			<button id="clearBtn">保存图片</button>
+			<button id="clearBtn">上传图片</button>
+			<button id="clearBtn">输入文字</button>
+			</div>
+		
+			</div>
+			<script>
+		    const canvas =
+			 document.getElementById('drawCanvas');
+		    const ctx = canvas.getContext('2d');
+		    const colorPicker = document.getElementById('colorPicker');
+		    const lineWidth = document.getElementById('lineWidth');
+		    const textInput = document.getElementById('textInput');
+		    const clearBtn = document.getElementById('clearBtn');
+		    const saveBtn = document.getElementById('saveBtn');
+		    let isDrawing = false;
+		   
+		    canvas.addEventListener('mousedown', () => {
+		      isDrawing = true;
+		      ctx.beginPath();
+		    });
+		    canvas.addEventListener('mousemove', (e) => {
+		      if(!isDrawing) return;
+		      ctx.strokeStyle = colorPicker.value;
+		      ctx.lineWidth = lineWidth.value;
+		      ctx.lineCap = 'round';
+		      ctx.lineTo(e.offsetX, e.offsetY);
+		      ctx.stroke();
+		    });
+		    canvas.addEventListener('mouseup', () => isDrawing = false);
+		    canvas.addEventListener('mouseleave', () => isDrawing = false);
+		   
+		    canvas.addEventListener('click', (e) => {
+		      const text = textInput.value.trim();
+		      if(!text) return; // 没输入文字就不执行
+		      // 设置文字样式
+		      ctx.font = '28px 微软雅黑';
+		      ctx.fillStyle = colorPicker.value; // 用选好的颜色写字
+		      ctx.fillText(text, e.offsetX, e.offsetY); // 在点击位置写字
+		    });
+		 
+		    clearBtn.addEventListener('click', () => {
+		      ctx.clearRect(0, 0, canvas.width, canvas.height);
+		    });
+		    
+		    saveBtn.addEventListener('click', () => {
+		      const link = document.createElement('a');
+		      link.download = '潮绣DIY图案.png';
+		      link.href = canvas.toDataURL('image/png');
+		      link.click();
+		    });
+			
+			 </script>
+	      <div class="section">
+			  <h2>------</h2>
+		  </div>		 
+	
+			<div class="template-grid">
+				<div class="template-card">
+			    <div class="patterns">
+					<div class="pattern">
+						<img src="../img/144b133e662ef2c926b4a8268c47dc14.jpg" alt="花">
+						<div class="info">
+							<div class="title">牡丹花</div>
+						<a href=" " class="btn">定制该图案</a >
+						         </div>
+						       </div>
+						       <div class="pattern">
+						         <img src="../img/8cc313823d3349ab0a045a9393ca557a.jpg" alt="小鱼图案">
+						         <div class="info">
+						           <div class="title">飞鹤</div>
+						           <a href="#" class="btn">定制该图案</a>
+						         </div>
+						       </div>
+						       <div class="pattern">
+						         <img src="../img/43098fe7449b79f517d8f7ab45bce30a.jpg" alt="花朵图案">
+						         <div class="info">
+						           <div class="title">立体小花</div>
+						           <a href="#" class="btn">定制该图案</a >
+						         </div>
+						       </div>
+							   <div class="pattern">
+							     <img src="../img/14d8341eb5e602900360b89da36acc2d.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">喜鹊</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+							   <div class="pattern">
+							     <img src="../img/00e6026f430a904d625abf0c94d1bb16.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">荷花</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+							   <div class="pattern">
+							     <img src="../img/041f1a19873aa479ef4b8d0cc5288038.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">花纹</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+							   <div class="pattern">
+							     <img src="../img/358399ef733936643222f1c118f15cba.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">孔雀</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+							   <div class="pattern">
+							     <img src="../img/a60e29a991a6da2a935c0869b8d365f0.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">花</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+							   <div class="pattern">
+							     <img src="../img/2a934513d40cec454accfa142d09ddcc.jpg" alt="花朵图案">
+							     <div class="info">
+							       <div class="title">花与瓶</div>
+							       <a href="#" class="btn">定制该图案</a >
+							     </div>
+							   </div>
+						     </div>
+						</div>
+					</div>
+					</div>>
+						
+					
+	</body>
+</html>
