@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<style>
+		 *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif}
+		 body{background:#f7f5f2}
+		 /* 顶部 */
+		 .header{
+		   height:50px;
+		   background:#fff;
+		   display:flex;
+		   align-items:center;
+		   justify-content:center;
+		   font-size:17px;
+		   border-bottom:1px solid #eee;
+		 }
+		 /* 订单卡片 */
+		 .card{
+		   background:#fff;
+		   margin:15px;
+		   border-radius:14px;
+		   padding:20px;
+		   box-shadow:0 2px 10px rgba(0,0,0,0.04);
+		 }
+		 .card-title{
+		   font-size:16px;
+		   margin-bottom:15px;
+		   color:#333;
+		 }
+		 /* 商品信息 */
+		 .goods-item{
+		   display:flex;
+		   align-items:center;
+		   margin-bottom:15px;
+		 }
+		 .goods-img{
+		   width:80px;
+		   height:80px;
+		   border-radius:10px;
+		   object-fit:cover;
+		   margin-right:12px;
+		 }
+		 .goods-name{
+		   font-size:16px;
+		   margin-bottom:6px;
+		 }
+		 .goods-spec{
+		   color:#999;
+		   font-size:14px;
+		 }
+		 .price-row{
+		   display:flex;
+		   justify-content:space-between;
+		   font-size:15px;
+		   padding-top:10px;
+		   border-top:1px solid #f2f2f2;
+		 }
+		 .price{
+		   color:#ff4c40;
+		   font-weight:bold;
+		 }
+		 /* 支付方式 */
+		 .pay-item{
+		   display:flex;
+		   align-items:center;
+		   justify-content:space-between;
+		   padding:14px 0;
+		   border-bottom:1px solid #f5f5f5;
+		 }
+		 .pay-left{
+		   display:flex;
+		   align-items:center;
+		   gap:12px;
+		 }
+		 .pay-icon{
+		   width:28px;
+		   height:28px;
+		 }
+		 .pay-text{
+		   font-size:16px;
+		 }
+		 .radio{
+		   width:18px;
+		   height:18px;
+		   border-radius:50%;
+		   border:1px solid #ddd;
+		 }
+		 .radio.checked{
+		   background:#ff4c40;
+		   border-color:#ff4c40;
+		 }
+		 /* 底部支付按钮 */
+		 .bottom-bar{
+		   position:fixed;
+		   bottom:0;
+		   left:0;
+		   width:100%;
+		   background:#fff;
+		   padding:12px 15px;
+		   display:flex;
+		   justify-content:space-between;
+		   align-items:center;
+		   border-top:1px solid #eee;
+		 }
+		 .total{
+		   font-size:18px;
+		   color:#ff4c40;
+		   font-weight:bold;
+		 }
+		 .pay-btn{
+		   background:#ff4c40;
+		   color:#fff;
+		   border:none;
+		   border-radius:10px;
+		   padding:12px 25px;
+		   font-size:16px;
+		 }
+		 /* 支付成功遮罩 */
+		 .mask{
+		   position:fixed;
+		   top:0;left:0;right:0;bottom:0;
+		   background:rgba(0,0,0,0.5);
+		   display:none;
+		   align-items:center;
+		   justify-content:center;
+		 }
+		 .success-box{
+		   background:#fff;
+		   width:280px;
+		   border-radius:14px;
+		   padding:30px 20px;
+		   text-align:center;
+		 }
+		 .success-title{
+		   font-size:18px;
+		   color:#333;
+		   margin-bottom:10px;
+		 }
+		 .success-desc{
+		   color:#666;
+		   font-size:14px;
+		   margin-bottom:20px;
+		 }
+		 .count-down{
+		   color:#999;
+		   font-size:14px;
+		 }
+		 </style>
+		 </head>
+		 <body>
+		 <div class="header">确认支付</div>
+		 <div class="card">
+		   <div class="card-title">订单详情</div>
+		   <div class="goods-item">
+		     <img class="goods-img" src="../img/0e3bc0d7b8c5094397f29bbd535faba8.jpg" alt="潮绣DIY">
+		     <div>
+		       <div class="goods-name">潮绣DIY定制服务</div>
+		       <div class="goods-spec">手工刺绣 · 个性化图案</div>
+		     </div>
+		   </div>
+		   <div class="price-row">
+		     <span>订单金额</span>
+		     <span class="price">¥10000.00</span>
+		   </div>
+		 </div>
+		 <div class="card">
+		   <div class="card-title">选择支付方式</div>
+		   <div class="pay-item" onclick="select(this)">
+		     <div class="pay-left">
+		       <div class="pay-text">微信支付</div>
+		     </div>
+		     <div class="radio checked"></div>
+		   </div>
+		   <div class="pay-item" onclick="select(this)">
+		     <div class="pay-left">
+		       <div class="pay-text">支付宝</div>
+		     </div>
+			 <div class="radio"></div>
+			 </div>
+			 <div class="pay-item" onclick="select(this)">
+			   <div class="pay-left">
+			     <div class="pay-text">银行卡</div>
+			   </div>
+		     <div class="radio"></div>
+		   </div>
+		 </div>
+		 <div class="bottom-bar">
+		   <div class="total">实付：¥10000.00</div>
+		   <button class="pay-btn" onclick="toPay()">立即支付</button>
+		 </div>
+		 <!-- 支付成功弹窗 -->
+		 <div class="mask" id="mask">
+		   <div class="success-box">
+		     <div class="success-title">支付成功</div>
+		     <div class="success-desc">感谢您的支持</div>
+		     <div class="count-down" id="count">3秒后返回DIY页面</div>
+		   </div>
+		 </div>
+		 <script>
+		 // 选择支付方式
+		 function select(el){
+		   document.querySelectorAll('.radio').forEach(r=>r.classList.remove('checked'))
+		   el.querySelector('.radio').classList.add('checked')
+		 }
+		 // 支付
+		 function toPay(){
+		   document.getElementById('mask').style.display='flex'
+		   let s=3
+		   let timer=setInterval(()=>{
+		     s--
+		     document.getElementById('count').innerText=s+'秒后返回DIY页面'
+		     if(s<=0){
+		       clearInterval(timer)
+		       // 返回上一页（DIY/商品页）
+		       history.back()
+		     }
+		   },1000)
+		 }
+		 </script>
+		 </body>
+</html>
